@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<h1>基于Asciidoc的轻量级标记语言</h1>
+<table style="background:#66CDAA"><tbody><tr><td>IMPORTANT: </td><td>此项目在Unix环境下编译运行, 没有适配Windows环境.<br/>
+ 作者: 熊子稼 郭浩然 刘越 汤丹丹  </td></tr></tbody></table>
+<p>Asciidoc是一种功能强大且简便易用的轻量级标记语言<a href="#HOMEPAGE">[1]</a>. 它与目前常见的Markdown标记语言类似, 甚至部分兼容. 但比Markdown更为强大. </p>
+<p>本此实验我们尝试使用YACC(BISON)和LEX(FLEX)两种工具, 实现一种基于Asciidoc的轻量级标记语言. </p>
+<table style="background:#66CDAA"><tbody><tr><td>NOTE: </td><td>目前本项目还不是非常完善, 如感兴趣, 可以关注作者的<br/>
+ Github: https: 个人主页 https: (其实这段话就是凑个字数展示一下NOTE功能) </td></tr></tbody></table>
+<p>由于时间仓促, 我们只实现了老师要求做到的全部功能, 更多复杂功能没有实现. 但框架已经建立, 完善只是时间问题. </p>
+<p>本次实验没有使用开源代码, 但受到了以下项目启发<a href="#HELPER">[2]</a>, 在此特别感谢. </p>
+<h1>词法分析</h1>
+<p>使用flex做词法分析, flex是一种生成扫描器的工具. 通过编写正则表达式, 程序可以自动生成自动机. 以供词法分析使用. </p>
+<h1>语法分析</h1>
+<p>由于时间限制, 没能将语法中的移进-规约冲突完全消除. 目前的产生式如下所示: </p>
+<p>file: content<br/>
+  ;<br/>
+ </p>
+<p>content:<br/>
+  | content block_list<br/>
+  | content tight_bolck<br/>
+  ;<br/>
+ </p>
+<p>block_list:<br/>
+  | block<br/>
+  | block<i>list EMPTY</i>LINE<br/>
+  | block<i>list EMPTY</i>LINE block<br/>
+  ;<br/>
+ </p>
+<p>block: paragraph<br/>
+  | NOTE paragraph<br/>
+  | TIP paragraph<br/>
+  | WARN paragraph<br/>
+  | IMPT paragraph<br/>
+  | CAUTN paragraph<br/>
+  | QTSOURCE EOL qtsource_list<br/>
+  ;<br/>
+ </p>
+<p>qtsource<i>list: qtsource</i>item<br/>
+  | qtsource<i>list qtsource</i>item<br/>
+  ;<br/>
+ </p>
+<p>qtsource<i>item: UL L</i>THREE<i>SB inline</i>item<i>list R</i>THREE<i>SB inline</i>item_list EOL<br/>
+  ;<br/>
+ </p>
+<p>tight_bolck: header<br/>
+  | image<br/>
+  ;<br/>
+ </p>
+<p>image: IMG IMG<i>PATH img</i>attrs EOL<br/>
+  ;<br/>
+ </p>
+<p>img_attrs:<br/>
+  | img<i>attrs IMG</i>CAPTION IMG<i>ATTR</i>VALUE<br/>
+  | img<i>attrs IMG</i>TITLE IMG<i>ATTR</i>VALUE<br/>
+  | img<i>attrs IMG</i>WIDTH IMG<i>ATTR</i>VALUE<br/>
+  | img<i>attrs IMG</i>HIGHT IMG<i>ATTR</i>VALUE<br/>
+ </p>
+<p>header: LH1 inline<i>item</i>list RH1 EOL<br/>
+  | LH2 inline<i>item</i>list RH2 EOL<br/>
+  | LH3 inline<i>item</i>list RH3 EOL<br/>
+  | LH4 inline<i>item</i>list RH4 EOL<br/>
+  | LH5 inline<i>item</i>list RH5 EOL<br/>
+  | LH6 inline<i>item</i>list RH6 EOL<br/>
+  ;<br/>
+ </p>
+<p>paragraph: paragraph inline<i>item</i>list EOL<br/>
+  | inline<i>item</i>list EOL<br/>
+  ;<br/>
+ </p>
+<p>inline<i>item</i>list: inline<i>item</i>list inline_item +  | inline_item +  ;<br/>
+ inline_item: text<br/>
+  | LBOLD inline<i>item</i>list RBOLD<br/>
+  | LITALIC inline<i>item</i>list RITALIC<br/>
+  | LQT inline<i>item</i>list RQT<br/>
+  | CR<br/>
+  | SPACE<br/>
+  ;<br/>
+ </p>
+<p>text: CHAR   | text CHAR   ; </p>
+<h1>实现功能</h1>
+<p>实现的功能基本都在报告中展示了 字体支持 <b>黑体</b>, <i>斜体</i>, <i><b>斜黑体</b></i> , <b><i>混合</i>体</b> </p>
+<h3>多级标题</h3>
+<table style="background:#66CDAA"><tbody><tr><td>WARNING: </td><td>提示<br/>
+ 标签 </td></tr></tbody></table>
+<p>插图(见下方) </p>
+<p>参考文献(见页末) </p>
+<h1>编译运行</h1>
+<p>使用命令行编译, 即可生成HTML文档 </p>
+<img src="pic1.png" />
+<div style="text-align:center">Figure 1. 示例插图</div>
+<h1>任务分工</h1>
+<p>熊子稼(201683080091)：代码实现<br/>
+ 郭浩然(201683080082)：语法分析<br/>
+ 刘越(201683080007)：软件测试<br/>
+ 汤丹丹(201683080062)：编写文档<br/>
+ </p>
+<h1>附注</h1>
+<ul><li><a name="HOMEPAGE"/>[1]  Asciidoc项目官网在 http:</li>
+<li><a name="HELPER"/>[2]  开源项目LuoZhongYao/helper: 使用 yacc & flex ( flex & bison )实现markdown的解析 https:</li>
+</ul></body>
+</html>

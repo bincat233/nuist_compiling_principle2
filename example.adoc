@@ -1,0 +1,34 @@
+= 文章标题 =
+这是一篇测试文章
+
+= 一级标题 =
+
+这是一大段话，这是一大段话。这是一大段话，这是一大段话。然后这里有一个引用，哈哈哈哈哈<<yy>>。
+[bibliography]
+
+- [[[yy]]] 熊子稼 说的梦话，2019-5-16
+
+== 二级标题   
+其实这里
+换了行
+但是换行会
+解析成空格
+除非用加号
+像这样 +
+你看，换行了
+
+要是留一个空行，直接就下一段了
+单 `\` 转义
+
+//afasdfasdffadsf
+
+NOTE: sdfasdfasdf
+
+image::./1.jpg[caption="222", title="mmm", 100]
+
+asdfasdf *fdasfsadf* adsfasd *_dfasdfsd_*
+
+2333sad<<2333adsfs>>
+
+
+

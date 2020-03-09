@@ -1,0 +1,59 @@
+= 说明
+
+= 行首语法
+
+* 标题 `=空格`
+* 无序列表 `*空格`
+* 段落分割 `空行`
+* 分割线 `\***`
+
+= 行内语法 =
+
+* 粗体 用 `*` 包裹, 有空格
+* 斜体 用 `_` 包裹, 有空格, 粗体斜体可以嵌套
+* 下划线 `[.underline]\#内容#`
+* 删除线 方括号里换成 `.line-through`
+* 大小 方括号 `.small` `.big`
+* 上下标 `^` `~` 包裹
+
+sadfsd    sadfsdf  dsfsadffafd      dsfasdf      fsdfsaf<<pp>>
+
+
+[bibliography]
+- [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
+ From Journeyman to Master. Addison-Wesley. 1999.
+
+
+= 跨行语法 =
+== asfdasf ==   
+aasdf
+asdfasdf adsf     sdaf
+sadfsa +
+sadfadsf
+asdf
+asdfasd 
+单 `\` 转义
+//afasdfasdffadsf
+
+TIP: asfasf +
+_asfsafd_
+asfsadf
+asf
+
+image::https://pic4.zhimg.com/80/v2-2e21b2dcaf9233c5697c46524b2f4aae_qhd.jpg[title="123"]
+
+image::{asdfas}/avatar/oschina_200.jpg[caption="", title="名称", 100]jk
+
+asdfasdf *fdasfsadf* adsfasd *_dfasdfsd_*
+
+
+aslkdfj _sss *l* sda_ ksadfsl +
+safdsadsdf
+
+----
+sadfsadf
+----
+
+_s_d_
+
+
