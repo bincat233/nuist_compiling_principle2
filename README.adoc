@@ -24,11 +24,11 @@ make all
 
 == 参考项目
 
-https://github.com/LuoZhongYao/helper[yacc & flex ( flex & bison )实现markdown的解析]  
-https://github.com/MichaelHu/markdown[A markdown parser written in c]  
-https://gist.github.com/neher/f5e86fe8d213f214166a[asciidoc的BNF范式]  
-https://github.com/asciidoctor/asciidoc-grammar-prototype[早期版本的asciidoc语法]  
-http://discuss.asciidoctor.org/Asciidoc-syntax-definition-td1920.html[asciidoc社区关于规范语法的讨论]  
-https://github.com/asciidocj/asciidocj[Java手写的asciidoc paser]  
-https://github.com/asciidocj/asciidocj[又一个产生式]  
-http://www.lysator.liu.se/c/ANSI-C-grammar-l.html[C语言产生式]  
+https://github.com/LuoZhongYao/helper[yacc & flex ( flex & bison )实现markdown的解析] +
+https://github.com/MichaelHu/markdown[A markdown parser written in c] +
+https://gist.github.com/neher/f5e86fe8d213f214166a[asciidoc的BNF范式] +
+https://github.com/asciidoctor/asciidoc-grammar-prototype[早期版本的asciidoc语法] +
+http://discuss.asciidoctor.org/Asciidoc-syntax-definition-td1920.html[asciidoc社区关于规范语法的讨论] +
+https://github.com/asciidocj/asciidocj[Java手写的asciidoc paser] +
+https://github.com/asciidocj/asciidocj[又一个产生式] +
+http://www.lysator.liu.se/c/ANSI-C-grammar-l.html[C语言产生式] +
